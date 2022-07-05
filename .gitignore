@@ -53,3 +53,7 @@ app.*.map.json
 
 /ios/Runner/Info.plist
 
+
+
+
+/android/key.properties

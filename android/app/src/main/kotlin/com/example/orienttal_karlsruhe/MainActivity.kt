@@ -1,4 +1,4 @@
-package com.example.orienttal_karlsruhe
+package com.usama.orienttal_karlsruhe
 
 import io.flutter.embedding.android.FlutterActivity
 
