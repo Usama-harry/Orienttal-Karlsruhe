@@ -29,3 +29,15 @@ const listItemPriceTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
   color: primaryColor,
 );
+
+const dialogTitleTextStyle = TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.bold,
+  color: primaryColor,
+);
+
+const snackBarTitleTextStyle = TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+  fontSize: 20,
+);

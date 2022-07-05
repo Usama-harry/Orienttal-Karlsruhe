@@ -7,6 +7,8 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import './views/main_screen.dart';
 import './views/catagory_items_screen.dart';
 import 'web/views/web_main_screen.dart';
+import './web/views/catagories_items_screen.dart';
+import './web/views/auth.dart';
 //Providers
 import './providers/data.dart';
 
@@ -40,15 +42,18 @@ class MyApp extends StatelessWidget {
         )
       ],
       builder: (context, child) => MaterialApp(
-        title: 'MenuKarte',
+        debugShowCheckedModeBanner: false,
+        title: 'Orienttal Karlsruhe',
         theme: ThemeData.dark(),
-        initialRoute:
-            kIsWeb ? WebMainScreen.routeName : AppMainScreen.routeName,
+        initialRoute: kIsWeb ? AuthScreen.routeName : AppMainScreen.routeName,
         routes: {
           AppMainScreen.routeName: (context) => const AppMainScreen(),
           CatagoryItemsScreen.routeName: (context) =>
               const CatagoryItemsScreen(),
           WebMainScreen.routeName: (context) => const WebMainScreen(),
+          CatagoriesItemsScreen.routeName: (context) =>
+              const CatagoriesItemsScreen(),
+          AuthScreen.routeName: (context) => const AuthScreen(),
         },
       ),
     );

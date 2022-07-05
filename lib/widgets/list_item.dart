@@ -26,7 +26,7 @@ class ListItem extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
       ),
       trailing: Text(
-        '${item.price}e',
+        '${item.price}\u{20AC}',
         style: listItemPriceTextStyle,
       ),
     );
