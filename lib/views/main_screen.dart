@@ -9,6 +9,8 @@ import '../util.dart';
 import '../widgets/grid_item.dart';
 //Models
 import '../models/catagory.dart';
+//Screens
+import '../views/legal_screen.dart';
 
 class AppMainScreen extends StatefulWidget {
   static const routeName = '/appMainScreen';
@@ -48,6 +50,13 @@ class _AppMainScreenState extends State<AppMainScreen> {
                 catagory: catagoryProvider.catagories[index],
               ),
             ),
+      floatingActionButton: ElevatedButton(
+        child: const Text('Rechtliches'),
+        onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => const LegalScreen(),
+        )),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 

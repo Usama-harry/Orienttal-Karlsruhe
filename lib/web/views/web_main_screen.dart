@@ -87,7 +87,9 @@ class _WebMainScreenState extends State<WebMainScreen> {
                                       .doc(doc.id)
                                       .update({'id': doc.id});
                                   clearControllers();
-                                }).catchError((error) {});
+                                }).catchError((error) {
+                                  print(error);
+                                });
 
                                 Navigator.pop(context);
                               }
@@ -127,7 +129,7 @@ class _WebMainScreenState extends State<WebMainScreen> {
             padding: const EdgeInsets.all(100),
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 300,
-              childAspectRatio: 3 / 2,
+              childAspectRatio: 1,
               crossAxisSpacing: 30,
               mainAxisSpacing: 30,
             ),

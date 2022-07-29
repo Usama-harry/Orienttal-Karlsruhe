@@ -41,3 +41,11 @@ const snackBarTitleTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 20,
 );
+
+const legalTitleTextStyle = TextStyle(
+  fontSize: 16,
+  color: primaryColor,
+  fontWeight: FontWeight.bold,
+);
+
+const legalSubTitleTextStyle = TextStyle();
