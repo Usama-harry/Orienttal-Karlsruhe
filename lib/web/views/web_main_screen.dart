@@ -16,6 +16,7 @@ class WebMainScreen extends StatefulWidget {
 }
 
 class _WebMainScreenState extends State<WebMainScreen> {
+  final positionController = TextEditingController();
   final nameController = TextEditingController();
   final imageUrlController = TextEditingController();
   final _key = GlobalKey<FormState>();
@@ -48,6 +49,17 @@ class _WebMainScreenState extends State<WebMainScreen> {
                               child: ListView(
                                 children: [
                                   MyTextField(
+                                    hintText: 'Position',
+                                    controller: positionController,
+                                    isDigitOnly: true,
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'This field is required';
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                  MyTextField(
                                     hintText: 'Name',
                                     controller: nameController,
                                     validator: (value) {
@@ -78,6 +90,8 @@ class _WebMainScreenState extends State<WebMainScreen> {
                                     .collection('catagories')
                                     .add({
                                   'id': 'z',
+                                  'position':
+                                      int.parse(positionController.text),
                                   'name': nameController.text,
                                   'imageUrl': imageUrlController.text,
                                   'items': [],
@@ -118,7 +132,10 @@ class _WebMainScreenState extends State<WebMainScreen> {
         ],
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('catagories').snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection('catagories')
+            .orderBy('position')
+            .snapshots(),
         builder: (_, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -146,12 +163,14 @@ class _WebMainScreenState extends State<WebMainScreen> {
   void clearControllers() {
     nameController.clear();
     imageUrlController.clear();
+    positionController.clear();
   }
 
   @override
   void dispose() {
     nameController.dispose();
     imageUrlController.dispose();
+    positionController.dispose();
     super.dispose();
   }
 }

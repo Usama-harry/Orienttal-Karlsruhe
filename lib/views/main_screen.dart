@@ -29,7 +29,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'MenuKarte',
+          'MenüKarte',
           style: appBarTextStyle,
         ),
         centerTitle: true,

@@ -12,7 +12,11 @@ class Data with ChangeNotifier {
   }
 
   Future<void> loadData() async {
-    FirebaseFirestore.instance.collection('catagories').get().then((value) {
+    FirebaseFirestore.instance
+        .collection('catagories')
+        .orderBy('position')
+        .get()
+        .then((value) {
       _catagories.clear();
       for (var doc in value.docs) {
         _catagories.add(Catagory.fromMap(
@@ -24,6 +28,7 @@ class Data with ChangeNotifier {
 
     FirebaseFirestore.instance
         .collection('catagories')
+        .orderBy('position')
         .snapshots()
         .listen((event) {
       _catagories.clear();
@@ -32,6 +37,7 @@ class Data with ChangeNotifier {
           doc.data(),
         ));
       }
+
       notifyListeners();
     });
   }

@@ -16,6 +16,21 @@ class CatagoryItemsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final catId = ModalRoute.of(context)!.settings.arguments as String;
     final catagory = Provider.of<Data>(context).findCatagoryById(catId);
+
+    for (var i = 0; i < catagory.items.length; i++) {
+      for (var j = i + 1; j < catagory.items.length; j++) {
+        if (catagory.items[j].position < catagory.items[i].position) {
+          final item = catagory.items[i];
+          catagory.items[i] = catagory.items[j];
+          catagory.items[j] = item;
+        }
+      }
+    }
+
+    for (var i = 0; i < catagory.items.length; i++) {
+      print('${catagory.items[i].name}   ${catagory.items[i].position}');
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(

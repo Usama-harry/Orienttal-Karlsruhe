@@ -22,6 +22,21 @@ class _ListItemState extends State<ListItem> {
 
   @override
   Widget build(BuildContext context) {
+    for (var i = 0; i < widget.data['items'].length; i++) {
+      for (var j = i + 1; j < widget.data['items'].length; j++) {
+        if (widget.data['items'][j]['position'] <
+            widget.data['items'][i]['position']) {
+          final item = widget.data['items'][i];
+          widget.data['items'][i] = widget.data['items'][j];
+          widget.data['items'][j] = item;
+        }
+      }
+    }
+
+    for (var i = 0; i < widget.data['items'].length; i++) {
+      print(widget.data['items'][i]);
+    }
+
     return isLoading
         ? const Center(child: CircularProgressIndicator.adaptive())
         : ListTile(

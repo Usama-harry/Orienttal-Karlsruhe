@@ -17,6 +17,7 @@ class CatagoriesItemsScreen extends StatefulWidget {
 }
 
 class _CatagoriesItemsScreenState extends State<CatagoriesItemsScreen> {
+  final positionController = TextEditingController();
   final nameController = TextEditingController();
   final descriptionController = TextEditingController();
   final priceController = TextEditingController();
@@ -56,6 +57,7 @@ class _CatagoriesItemsScreenState extends State<CatagoriesItemsScreen> {
                     child: CircularProgressIndicator.adaptive(),
                   );
                 }
+
                 return ListView.builder(
                   itemCount: snapshot.data['items'].length,
                   itemBuilder: (_, index) => ListItem(
@@ -85,6 +87,17 @@ class _CatagoriesItemsScreenState extends State<CatagoriesItemsScreen> {
                     child: ListView(
                       children: [
                         MyTextField(
+                          hintText: 'Position',
+                          controller: positionController,
+                          isDigitOnly: true,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'This field is required';
+                            }
+                            return null;
+                          },
+                        ),
+                        MyTextField(
                           hintText: 'Name',
                           controller: nameController,
                           validator: (value) {
@@ -107,7 +120,6 @@ class _CatagoriesItemsScreenState extends State<CatagoriesItemsScreen> {
                         MyTextField(
                           hintText: 'Price',
                           controller: priceController,
-                          isDigitOnly: true,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'This field is required';
@@ -125,10 +137,11 @@ class _CatagoriesItemsScreenState extends State<CatagoriesItemsScreen> {
                       final updatedItems = data['items'] as List<dynamic>;
                       updatedItems.add(
                         {
+                          'position': int.parse(positionController.text),
                           'id': DateTime.now().toString(),
                           'name': nameController.text,
                           'description': descriptionController.text,
-                          'price': int.parse(
+                          'price': double.tryParse(
                             priceController.text,
                           ),
                         },
@@ -170,6 +183,7 @@ class _CatagoriesItemsScreenState extends State<CatagoriesItemsScreen> {
   }
 
   void clearControllers() {
+    positionController.clear();
     nameController.clear();
     descriptionController.clear();
     priceController.clear();
@@ -183,6 +197,7 @@ class _CatagoriesItemsScreenState extends State<CatagoriesItemsScreen> {
 
   @override
   void dispose() {
+    positionController.dispose();
     nameController.dispose();
     descriptionController.dispose();
     priceController.dispose();
