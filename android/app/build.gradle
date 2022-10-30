@@ -50,7 +50,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.usama.orienttal_karlsruhe"
+        applicationId "com.usama.orienttal_karlsruhe1"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 19
@@ -73,6 +73,7 @@ android {
            signingConfig signingConfigs.release
        }
    }
+    namespace 'com.usama.orienttal_karlsruhe1'
 }
 
 

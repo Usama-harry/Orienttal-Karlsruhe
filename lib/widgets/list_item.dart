@@ -23,10 +23,10 @@ class ListItem extends StatelessWidget {
       subtitle: Text(
         item.description,
         style: listItemSubTitleTextStyle,
-        overflow: TextOverflow.ellipsis,
+        overflow: TextOverflow.visible,
       ),
       trailing: Text(
-        '${item.price}\u{20AC}',
+        '${item.price}0\u{20AC}',
         style: listItemPriceTextStyle,
       ),
     );
